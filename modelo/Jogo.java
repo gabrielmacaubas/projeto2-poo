@@ -3,11 +3,11 @@ package modelo;
 import java.util.ArrayList;
 
 public class Jogo {
-    public int id;
-    public String data; 
-    public String local;
-    public int estoque;
-    public double preco;
+    private int id;
+    private String data; 
+    private String local;
+    private int estoque;
+    private double preco;
     private Time time1;   
     private Time time2;
     private ArrayList<Ingresso> ingressos = new ArrayList<Ingresso>();
@@ -22,8 +22,28 @@ public class Jogo {
         this.time2 = time2;
     }
 
-    public void adicionar(Ingresso ing) {
-        ingressos.add(ing);
+    public int getId() {
+        return this.id;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public String getLocal() {
+        return this.local;
+    }
+
+    public int getEstoque() {
+        return this.estoque;
+    }
+
+    public double getPreco() {
+        return this.preco;
+    }
+
+    public void setEstoque(int novoEstoque) {
+        this.estoque = novoEstoque;
     }
 
     public double obterValorArrecadado() {
@@ -32,9 +52,14 @@ public class Jogo {
         for (Ingresso i : ingressos) {
             soma = soma + i.calcularValor();
         }
+
         return soma;
     }
-    
+
+    public void adicionar(Ingresso ing) {
+        ingressos.add(ing);
+    }
+
     public String toString(){
         String cod_ingressos = "";
 
@@ -42,8 +67,6 @@ public class Jogo {
             cod_ingressos = cod_ingressos + i.getCodigo() + ",";
         }
 
-        return "\nid=" + this.id + ", data=" + this.data + ", local=" + this.local + ", estoque=" + this.estoque + ", preco=" + this.preco + ", time1=" + this.time1.nome + " x " + "time2=" + this.time2.nome + "\ningressos:" + cod_ingressos;
-    }
-    
-    
+        return "\nid=" + this.id + ", data=" + this.data + ", local=" + this.local + ", estoque=" + this.estoque + ", preco=" + this.preco + ", time1=" + this.time1.getNome() + " x " + "time2=" + this.time2.getNome() + "\ningressos:" + cod_ingressos;
+    }   
 }

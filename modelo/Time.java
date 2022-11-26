@@ -3,9 +3,8 @@ package modelo;
 import java.util.ArrayList;
 
 public class Time {
-    public String nome;
+    private String nome;
     private String origem;
-
     private ArrayList<Jogo> jogos = new ArrayList<Jogo>();
 
     public Time(String nome, String origem) {
@@ -13,8 +12,8 @@ public class Time {
         this.origem = origem;
     }
 
-    public void adicionar(Jogo jog) {
-        jogos.add(jog);
+    public String getNome() {
+        return this.nome;
     }
 
     public double obterValorArrecadado() {
@@ -27,15 +26,18 @@ public class Time {
         return soma;
     }
 
+    public void adicionar(Jogo jog) {
+        jogos.add(jog);
+    }
+
     public String toString() {
         String jogos_string = "";
 
         for(Jogo j : jogos) {
-            jogos_string = jogos_string + " " + j.id + "=" + j.data + "," + j.local;
+            jogos_string = jogos_string + " " + j.getId() + "=" + j.getData() + "," + j.getLocal();
         }
 
         return "\nnome=" + this.nome + ", origem=" + this.origem +
                "\njogos: " + jogos_string;
     }
-
 }

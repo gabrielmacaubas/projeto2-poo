@@ -8,21 +8,21 @@ public class IngressoIndividual extends Ingresso {
     }
 
     @Override
-    public double calcularValor() {
-        return (1.2 * jogo.preco);
+    public int getCodigo() {
+        return super.getCodigo();
     }
 
     public void setJogo(Jogo jog) {
-        jog.estoque = jog.estoque - 1;
+        jog.setEstoque(jog.getEstoque() - 1);
         jogo = jog;
     }
-    
+
     @Override
-    public int getCodigo() {
-        return this.codigo;
+    public double calcularValor() {
+        return (1.2 * jogo.getPreco());
     }
 
 	public String toString() {
-		return super.toString() + ", jogo=" + jogo.id;
+		return super.toString() + ", jogo=" + jogo.getId();
     }
 }

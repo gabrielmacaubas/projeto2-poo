@@ -1,16 +1,18 @@
 package modelo;
 
 public abstract class Ingresso {
-    public int codigo;
+    private int codigo;
     
     public Ingresso(int codigo) {
         super();
         this.codigo = codigo;
     }
 
-    public abstract double calcularValor();
-    
-    public abstract int getCodigo();
+    public int getCodigo() {
+        return this.codigo;
+    }
+
+    public abstract double calcularValor(); 
 
     public String toString() {
         return "código=" + this.codigo;
