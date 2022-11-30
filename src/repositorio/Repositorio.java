@@ -91,13 +91,13 @@ public class Repositorio {
 	//--------------------------------------------------------------------
 	public void carregarObjetos()  	{
 	//--------------------------------------------------------------------
-
+		// carregar para o repositorio os objetos dos arquivos csv
+		
 		try {
 			//caso os arquivos nao existam, serao criados vazios
 			File f1 = new File( new File("times.csv").getCanonicalPath() ) ; 
 			File f2 = new File( new File("jogos.csv").getCanonicalPath() ) ; 
 			File f3 = new File( new File("ingressos.csv").getCanonicalPath() ) ; 
-			System.out.println(f1);
 			if (!f1.exists() || !f2.exists() || !f3.exists() ) {
 				//System.out.println("criando arquivo .csv vazio");
 				FileWriter arquivo1 = new FileWriter(f1); arquivo1.close();
@@ -110,7 +110,6 @@ public class Repositorio {
 			throw new RuntimeException("criacao dos arquivos vazios:"+ex.getMessage());
 		}
 
-		// carregar para o repositorio os objetos salvos nos arquivos csv
 		String linha;	
 		String[] partes;	
 		Time time;

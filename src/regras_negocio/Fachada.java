@@ -55,20 +55,20 @@ public class Fachada {
 		//...
 		return repositorio.localizarIngresso(codigo);
 	}
-	/*
-	public static Jogo	localizarJogo(int id) {
+	
+	public static Jogo localizarJogo(int id) {
 		//retorna o jogo do repositório com o id fornecido
 		//...
 	}
-	 */
-	public static void 	criarTime(String nome, String origem) throws Exception {
+	
+	public static Time 	criarTime(String nome, String origem) throws Exception {
 		//Exceção: nome existente no repositorio
 		//criar o time
 		//adicionar este time no repositório
 		//salvar o repositorio em arquivo
 	}
 
-	public static void 	criarJogo(String data, String local, int estoque, double preco, String nometime1, String nometime2)  throws Exception {
+	public static Jogo 	criarJogo(String data, String local, int estoque, double preco, String nometime1, String nometime2)  throws Exception {
 		
 		//Exceção: nometime1 ou nometime2 inexistente no repositorio, 
 		//  local ou data vazios, estoque ou preço menor ou igual a zero
@@ -85,7 +85,7 @@ public class Fachada {
 		//salvar o repositorio em arquivo
 	}
 
-	public static void	criarIngressoIndividual(int id) throws Exception{
+	public static IngressoIndividual criarIngressoIndividual(int id) throws Exception{
 		//Exceção: id inexistente no repositorio
 		//gerar codigo aleatório e verificar unicididade do codigo no jogo indicado
 		//criar o ingresso individual 
@@ -94,7 +94,7 @@ public class Fachada {
 		//salvar o repositorio em arquivo
 	}
 	
-	public static void	criarIngressoGrupo(int[] id) throws Exception{
+	public static IngressoGrupo	criarIngressoGrupo(int[] id) throws Exception{
 		//Exceção: id inexistente no repositorio 
 		//gerar codigo aleatório e verificar unicididade do codigo nos jogos indicados
 		//criar o ingresso de grupo, 

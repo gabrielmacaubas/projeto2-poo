@@ -106,7 +106,7 @@ public class Aplicacao2 {
 		//---------------------
 		//consulta jogo 4
 		//---------------------
-		/*
+		
 		try {
 			Jogo jogo =	Fachada.localizarJogo(4);
 
@@ -121,7 +121,7 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema na localizacao do jogo-->"+ex.getMessage());
 		}
-		 */
+		
 		//---------------------
 		//cancelamento do ingresso de grupo
 		//---------------------
