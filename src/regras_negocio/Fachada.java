@@ -16,15 +16,16 @@ import modelo.Jogo;
 import modelo.Time;
 import repositorio.Repositorio;
 
+
 public class Fachada {
 	private static Repositorio repositorio = new Repositorio();	
 	private Fachada() {}	
-
 	
 	public static ArrayList<Time> listarTimes() {
 		//retorna todos os times do repositório
 		return repositorio.getTimes();
 	}
+
 	public static ArrayList<Jogo> listarJogos() {
 		//retorna todos os jogos do repositório
 		return repositorio.getJogos();
@@ -34,12 +35,13 @@ public class Fachada {
 		//retorna todos os ingressos do repositório 
 		return repositorio.getIngressos();
 	}
+
 	public static ArrayList<Jogo> listarJogos(String data) {
 		//retorna os jogos do repositório na data fornecida
 		ArrayList<Jogo> JogosTemp = repositorio.getJogos();
 		ArrayList<Jogo> JogosData = new ArrayList<Jogo>();
 
-		for(Jogo j : JogosData) {
+		for(Jogo j : JogosTemp) {
 			if (j.getData().equals(data)) {
 				JogosData.add(j);
 			}
@@ -47,18 +49,18 @@ public class Fachada {
 
 		return JogosData;
 	}
+
 	public static Ingresso localizarIngresso(int codigo) {
 		//retorna o ingresso do repositório com o código fornecido
 		//...
 		return repositorio.localizarIngresso(codigo);
 	}
-	
-	
+	/*
 	public static Jogo	localizarJogo(int id) {
 		//retorna o jogo do repositório com o id fornecido
 		//...
 	}
-
+	 */
 	public static void 	criarTime(String nome, String origem) throws Exception {
 		//Exceção: nome existente no repositorio
 		//criar o time
@@ -107,6 +109,4 @@ public class Fachada {
 		//remover ingresso do repositório 
 		//salvar o repositorio em arquivo
 	}
-
-
 }

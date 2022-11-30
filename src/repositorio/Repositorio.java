@@ -97,6 +97,7 @@ public class Repositorio {
 			File f1 = new File( new File("times.csv").getCanonicalPath() ) ; 
 			File f2 = new File( new File("jogos.csv").getCanonicalPath() ) ; 
 			File f3 = new File( new File("ingressos.csv").getCanonicalPath() ) ; 
+			System.out.println(f1);
 			if (!f1.exists() || !f2.exists() || !f3.exists() ) {
 				//System.out.println("criando arquivo .csv vazio");
 				FileWriter arquivo1 = new FileWriter(f1); arquivo1.close();
@@ -219,7 +220,7 @@ public class Repositorio {
 		}
 
 		try	{
-			File f = new File( new File(".\\jogos2.csv").getCanonicalPath())  ;
+			File f = new File( new File("jogos2.csv").getCanonicalPath())  ;
 			arquivo = new FileWriter(f); 
 			for(Jogo j : jogos) 	{
 				arquivo.write(j.getId()+";"+j.getData()+";"+j.getLocal()+";"+j.getEstoque()+";"+j.getPreco()+";"+j.getTime1().getNome()+";"+j.getTime2().getNome()+"\n");	

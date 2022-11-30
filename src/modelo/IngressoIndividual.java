@@ -12,6 +12,10 @@ public class IngressoIndividual extends Ingresso {
         return super.getCodigo();
     }
 
+    public Jogo getJogo() {
+        return this.jogo;
+    }
+
     public void setJogo(Jogo jog) {
         jog.setEstoque(jog.getEstoque() - 1);
         jogo = jog;

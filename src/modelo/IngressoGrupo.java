@@ -13,6 +13,10 @@ public class IngressoGrupo extends Ingresso {
         return super.getCodigo();
     }
 
+    public ArrayList<Jogo> getJogos() {
+        return this.Jogos;
+    }
+
     public void adicionar(Jogo jog){
         jog.setEstoque(jog.getEstoque() - 1);
         Jogos.add(jog);

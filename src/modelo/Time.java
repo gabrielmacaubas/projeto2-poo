@@ -16,6 +16,10 @@ public class Time {
         return this.nome;
     }
 
+    public String getOrigem() {
+        return this.origem;
+    }
+
     public double obterValorArrecadado() {
         double soma = 0;
 
