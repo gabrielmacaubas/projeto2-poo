@@ -46,6 +46,14 @@ public class Jogo {
         this.estoque = novoEstoque;
     }
 
+    public void setTime1(Time time){
+        this.time1 = time;
+    }
+
+    public void setTime2(Time time){
+        this.time2 = time;
+    }
+
     public double obterValorArrecadado() {
         double soma = 0;
 
