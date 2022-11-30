@@ -1,3 +1,5 @@
+package appconsole;
+
 import java.util.Random;
 
 import modelo.IngressoGrupo;
@@ -24,7 +26,7 @@ public class Aplicacao1 {
 		Jogo j4 = new Jogo(4,"04/12/2022", "maracana", 10000, 20.0, t2, t4);
 
 		t1.adicionar(j1);
-		t1.adicionar(j2);
+		t1.adicionar(j3);	//j3
 		t2.adicionar(j1);
 		t2.adicionar(j4);
 		t3.adicionar(j2);

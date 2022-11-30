@@ -42,6 +42,14 @@ public class Jogo {
         return this.preco;
     }
 
+    public Time getTime1() {
+        return this.time1;
+    }
+
+    public Time getTime2() {
+        return this.time2;
+    }
+
     public void setEstoque(int novoEstoque) {
         this.estoque = novoEstoque;
     }
