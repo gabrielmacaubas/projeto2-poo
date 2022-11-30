@@ -94,9 +94,9 @@ public class Repositorio {
 
 		try {
 			//caso os arquivos nao existam, serao criados vazios
-			File f1 = new File( new File(".\\times.csv").getCanonicalPath() ) ; 
-			File f2 = new File( new File(".\\jogos.csv").getCanonicalPath() ) ; 
-			File f3 = new File( new File(".\\ingressos.csv").getCanonicalPath() ) ; 
+			File f1 = new File( new File("times.csv").getCanonicalPath() ) ; 
+			File f2 = new File( new File("jogos.csv").getCanonicalPath() ) ; 
+			File f3 = new File( new File("ingressos.csv").getCanonicalPath() ) ; 
 			if (!f1.exists() || !f2.exists() || !f3.exists() ) {
 				//System.out.println("criando arquivo .csv vazio");
 				FileWriter arquivo1 = new FileWriter(f1); arquivo1.close();
@@ -122,7 +122,7 @@ public class Repositorio {
 
 		Scanner arquivo=null;
 		try	{
-			File f = new File( new File(".\\times.csv").getCanonicalPath() )  ;
+			File f = new File( new File("times.csv").getCanonicalPath() )  ;
 			arquivo = new Scanner(f);	 //  pasta do projeto
 			while(arquivo.hasNextLine()) 	{
 				linha = arquivo.nextLine().trim();		
@@ -140,7 +140,7 @@ public class Repositorio {
 		}
 
 		try	{
-			File f = new File( new File(".\\jogos.csv").getCanonicalPath() )  ;
+			File f = new File( new File("jogos.csv").getCanonicalPath() )  ;
 			arquivo = new Scanner(f);	 //  pasta do projeto
 			while(arquivo.hasNextLine()) 	{
 				linha = arquivo.nextLine().trim();		
@@ -168,7 +168,7 @@ public class Repositorio {
 		}
 
 		try	{
-			File f = new File( new File(".\\ingressos.csv").getCanonicalPath())  ;
+			File f = new File( new File("ingressos.csv").getCanonicalPath())  ;
 			arquivo = new Scanner(f);	 //  pasta do projeto
 			while(arquivo.hasNextLine()) 	{
 				linha = arquivo.nextLine().trim();	
@@ -207,7 +207,7 @@ public class Repositorio {
 		//gravar nos arquivos csv os objetos que estão no repositório
 		FileWriter arquivo=null;
 		try	{
-			File f = new File( new File(".\\times2.csv").getCanonicalPath())  ;
+			File f = new File( new File("times2.csv").getCanonicalPath())  ;
 			arquivo = new FileWriter(f); 
 			for(Time t : times) 	{
 				arquivo.write(t.getNome()+";"+t.getOrigem()+"\n");	
@@ -231,7 +231,7 @@ public class Repositorio {
 		}
 
 		try	{
-			File f = new File( new File(".\\ingressos2.csv").getCanonicalPath())  ;
+			File f = new File( new File("ingressos2.csv").getCanonicalPath())  ;
 			arquivo = new FileWriter(f) ; 
 
 			for(Ingresso ingresso : ingressos) {
