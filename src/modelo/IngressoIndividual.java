@@ -17,8 +17,11 @@ public class IngressoIndividual extends Ingresso {
     }
 
     public void setJogo(Jogo jog) {
-        jog.setEstoque(jog.getEstoque() - 1);
         jogo = jog;
+    }
+    
+    public void remover() {
+        jogo = null;
     }
 
     @Override

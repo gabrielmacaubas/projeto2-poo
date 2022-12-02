@@ -25,7 +25,7 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema ao criar time-->"+ex.getMessage());
 		}
-
+		
 		try {
 			Fachada.criarJogo("02/12/2022", "maracana", 10000, 20.0, "brasil", "argentina");
 			Fachada.criarJogo("02/12/2022", "maracana", 10000, 20.0, "chile", "bolivia");
@@ -35,7 +35,8 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema ao criar jogo-->"+ex.getMessage());
 		}
-
+		
+		
 		try {
 			Fachada.criarIngressoIndividual(1);		//id do jogo
 			Fachada.criarIngressoIndividual(2);		//id do jogo
@@ -45,7 +46,9 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema ao criar ingresso individual-->"+ex.getMessage());
 		}
+		
 
+		
 		try {
 			Fachada.criarIngressoGrupo(new int[]{1,3} );		//id dos jogos
 			Fachada.criarIngressoGrupo(new int[]{2,4} );		//id dos jogos
@@ -54,6 +57,7 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema ao criar ingresso grupo-->"+ex.getMessage());
 		}
+		
 
 		//---------------------
 		//arrecadacao
@@ -126,7 +130,7 @@ public class Aplicacao2 {
 		//cancelamento do ingresso de grupo
 		//---------------------
 		Scanner teclado = new Scanner(System.in);
-
+		
 		try {
 			System.out.println("\ndigite o codigo do ingresso grupo para ser cancelado");
 
@@ -150,7 +154,7 @@ public class Aplicacao2 {
 		catch(Exception ex) {
 			System.out.println("problema no cancelamento do ingresso-->"+ex.getMessage());
 		}
-
+		
 		teclado.close();
 		System.out.println("\nfim do programa");
 	}

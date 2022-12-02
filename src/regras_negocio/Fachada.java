@@ -8,6 +8,7 @@ package regras_negocio;
  **********************************/
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import modelo.Ingresso;
 import modelo.IngressoGrupo;
@@ -22,22 +23,18 @@ public class Fachada {
 	private Fachada() {}	
 	
 	public static ArrayList<Time> listarTimes() {
-		//retorna todos os times do repositório
 		return repositorio.getTimes();
 	}
 
 	public static ArrayList<Jogo> listarJogos() {
-		//retorna todos os jogos do repositório
 		return repositorio.getJogos();
 	}
 	
 	public static ArrayList<Ingresso> listarIngressos() {
-		//retorna todos os ingressos do repositório 
 		return repositorio.getIngressos();
 	}
 
 	public static ArrayList<Jogo> listarJogos(String data) {
-		//retorna os jogos do repositório na data fornecida
 		ArrayList<Jogo> JogosTemp = repositorio.getJogos();
 		ArrayList<Jogo> JogosData = new ArrayList<Jogo>();
 
@@ -51,62 +48,171 @@ public class Fachada {
 	}
 
 	public static Ingresso localizarIngresso(int codigo) {
-		//retorna o ingresso do repositório com o código fornecido
-		//...
 		return repositorio.localizarIngresso(codigo);
 	}
 	
+	
 	public static Jogo localizarJogo(int id) {
-		//retorna o jogo do repositório com o id fornecido
-		//...
+		return repositorio.localizarJogo(id);
 	}
 	
-	public static Time 	criarTime(String nome, String origem) throws Exception {
-		//Exceção: nome existente no repositorio
-		//criar o time
-		//adicionar este time no repositório
-		//salvar o repositorio em arquivo
+	
+	public static Time criarTime(String nome, String origem) throws Exception {
+		if (repositorio.localizarTime(nome) != null) {
+			throw new Exception("Nao criou time - time ja criado:" + nome);
+		};
+
+		Time time = new Time(nome, origem);
+
+		repositorio.adicionar(time);
+		repositorio.salvar();	
+
+		return time;
 	}
 
+	
 	public static Jogo 	criarJogo(String data, String local, int estoque, double preco, String nometime1, String nometime2)  throws Exception {
+		Time time1 = repositorio.localizarTime(nometime1);
+		Time time2 = repositorio.localizarTime(nometime2);
+
+		if (time1 == null) {
+			throw new Exception("Nao criou jogo - time inexistente:" + nometime1);
+		}
+
+		if (time2 == null) {
+			throw new Exception("Nao criou jogo - time inexistente:" + nometime2);
+		}
+
+		if (local == "") {
+			throw new Exception("Nao criou jogo - local vazio");
+		}
+
+		if (data == "") {
+			throw new Exception("Nao criou jogo - data vazia");
+		}
+
+		if (estoque <= 0) {
+			throw new Exception("Nao criou jogo - estoque menor ou igual a zero:" + estoque);
+		}
+
+		if (preco <= 0) {
+			throw new Exception("Nao criou jogo - preco menor ou igual a zero:" + preco);
+		}
+
+		Jogo jogo = new Jogo(repositorio.getTotalJogos()+1, data, local, estoque, preco, time1, time2);
 		
-		//Exceção: nometime1 ou nometime2 inexistente no repositorio, 
-		//  local ou data vazios, estoque ou preço menor ou igual a zero
-		//gerar id sequencial do jogo 
-		//criar o jogo, 
-		//relacionar o jogo com os dois times 
-		//adicionar este jogo no repositório
-		//salvar o repositorio em arquivo
-	}
-	
-	public static void 	apagarJogo(int id) throws Exception{
-		//Exceção: id inexistente no repositorio
-		//remover o jogo do repositório
-		//salvar o repositorio em arquivo
+		time1.adicionar(jogo);
+		time2.adicionar(jogo);
+		repositorio.adicionar(jogo);
+		repositorio.salvar();
+
+		return jogo;
 	}
 
-	public static IngressoIndividual criarIngressoIndividual(int id) throws Exception{
-		//Exceção: id inexistente no repositorio
-		//gerar codigo aleatório e verificar unicididade do codigo no jogo indicado
-		//criar o ingresso individual 
-		//relacionar este ingresso com o jogo indicado
-		//adicionar este ingresso no repositório
-		//salvar o repositorio em arquivo
+	
+	public static void apagarJogo(int id) throws Exception{
+		Jogo jogo = repositorio.localizarJogo(id);
+
+		if(jogo == null) {
+			throw new Exception("Nao criou ingresso - codigo do jogo inexistente:" + id);
+		}
+
+		repositorio.remover(jogo);
+		repositorio.salvar();
 	}
+	 
+
+	 
+	public static IngressoIndividual criarIngressoIndividual(int id) throws Exception{
+		Jogo jogo = repositorio.localizarJogo(id);
+
+		if(jogo == null) {
+			throw new Exception("Nao criou ingresso - codigo do jogo inexistente:" + id);
+		}
+
+		Random sorteio = new Random();
+		int numero;
+		
+		while(true) {
+			numero = sorteio.nextInt(1000000);
+
+			if (repositorio.localizarIngresso(numero) == null) {
+				break;
+			}
+		} 
+
+		IngressoIndividual ingresso = new IngressoIndividual(numero);
+		
+		ingresso.setJogo(jogo);
+		jogo.adicionar(ingresso);
+		repositorio.adicionar(ingresso);
+		repositorio.salvar();
+		
+		return ingresso;
+	}
+	
+	
 	
 	public static IngressoGrupo	criarIngressoGrupo(int[] id) throws Exception{
-		//Exceção: id inexistente no repositorio 
-		//gerar codigo aleatório e verificar unicididade do codigo nos jogos indicados
-		//criar o ingresso de grupo, 
-		//relacionar este ingresso com os jogos indicados 
-		//adicionar este ingresso no repositório
-		//salvar o repositorio em arquivo
+		for (int i : id) {
+			Jogo jogo = repositorio.localizarJogo(i);
+
+			if(jogo == null) {
+				throw new Exception("Nao criou ingresso - codigo do jogo inexistente:" + i);
+			}
+		}
+
+		Random sorteio = new Random();
+		int numero;
+		
+		while(true) {
+			numero = sorteio.nextInt(1000000);
+
+			if (repositorio.localizarIngresso(numero) == null) {
+				break;
+			}
+		}
+
+		IngressoGrupo ingresso = new IngressoGrupo(numero);
+
+		for (int i : id) {
+			Jogo jogo = repositorio.localizarJogo(i);
+
+			ingresso.adicionar(jogo);
+			jogo.adicionar(ingresso);
+		}
+			
+		repositorio.adicionar(ingresso);
+		repositorio.salvar();
+
+		return ingresso;
 	}
 	
 	public static void	cancelarIngresso(int codigo) throws Exception {
-		//Exceção: codigo inexistente no repositorio
-		//remover o relacionamento entre ele e o(s) jogo(s) ligados a ele
-		//remover ingresso do repositório 
-		//salvar o repositorio em arquivo
+		Ingresso ingresso = repositorio.localizarIngresso(codigo);
+		
+		if (ingresso == null) {
+			throw new Exception("Nao cancelou ingresso - codigo do ingresso inexistente:" + codigo);
+		}
+		
+		if (ingresso instanceof IngressoIndividual) {	
+			IngressoIndividual i = (IngressoIndividual) ingresso;
+			
+			i.getJogo().remover(i);
+			i.remover();	
+		}
+
+		if (ingresso instanceof IngressoGrupo) {
+			IngressoGrupo i = (IngressoGrupo) ingresso;
+			ArrayList<Jogo> jogos = new ArrayList<>();
+
+			for (Jogo j : jogos) {
+				j.remover(i);
+				i.remover(j);
+			}
+		}
+
+		repositorio.remover(ingresso);
+		repositorio.salvar();
 	}
 }

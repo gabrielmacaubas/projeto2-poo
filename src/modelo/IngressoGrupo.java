@@ -18,8 +18,11 @@ public class IngressoGrupo extends Ingresso {
     }
 
     public void adicionar(Jogo jog){
-        jog.setEstoque(jog.getEstoque() - 1);
         Jogos.add(jog);
+    }
+
+    public void remover(Jogo jog) {
+        Jogos.remove(jog);
     }
 
     @Override

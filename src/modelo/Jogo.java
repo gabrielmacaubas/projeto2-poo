@@ -50,6 +50,10 @@ public class Jogo {
         return this.time2;
     }
 
+    public ArrayList<Ingresso> getIngressos() {
+        return this.ingressos;
+    }
+
     public void setEstoque(int novoEstoque) {
         this.estoque = novoEstoque;
     }
@@ -73,7 +77,13 @@ public class Jogo {
     }
 
     public void adicionar(Ingresso ing) {
+        this.estoque = this.estoque -1;
         ingressos.add(ing);
+    }
+
+    public void remover(Ingresso ing) {
+        this.estoque = this.estoque +1;
+        ingressos.remove(ing);
     }
 
     public String toString(){
