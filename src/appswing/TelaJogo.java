@@ -1,7 +1,7 @@
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
  * POO
- * Prof. Fausto Maranhão Ayres
+ * Prof. Fausto Maranhï¿½o Ayres
  **********************************/
 package appswing;
 
@@ -294,6 +294,17 @@ public class TelaJogo {
 		button_1.setBounds(186, 8, 147, 23);
 		frame.getContentPane().add(button_1);
 		
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					listagemPorData();
+				}
+				catch(Exception erro) {
+					label.setText(erro.getMessage());
+				}
+			}
+		});
+		
 		textField_4 = new JTextField();
 		textField_4.setBounds(343, 11, 86, 20);
 		frame.getContentPane().add(textField_4);
@@ -329,7 +340,7 @@ public class TelaJogo {
 		}
 	}
 	
-	public void listagemPorData () {
+	public void listagemPorData() {
 		try{
 			String data= textField_4.getText();
 			List<Jogo> lista = Fachada.listarJogos(data);

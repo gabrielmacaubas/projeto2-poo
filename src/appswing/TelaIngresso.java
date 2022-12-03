@@ -1,7 +1,7 @@
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
  * POO
- * Prof. Fausto Maranhão Ayres
+ * Prof. Fausto Maranhï¿½o Ayres
  **********************************/
 
 package appswing;
@@ -190,8 +190,12 @@ public class TelaIngresso {
 					//leitura dos ids
 					do{
 						try {
-							id = JOptionPane.showInputDialog("digite o id do jogo ou <enter>");
-							lista.add(Integer.parseInt(id));
+							id = JOptionPane.showInputDialog("digite os IDs dos jogos separados por espaÃ§o ou <enter>");
+							String temp[] = id.split(" ");
+							
+							for(String i : temp) {
+								lista.add(Integer.parseInt(i));
+							}	
 						}
 						catch(NumberFormatException ex) {
 							label.setText("id nao numerico:");
@@ -218,6 +222,7 @@ public class TelaIngresso {
 	public void listagem() {
 		try{
 			List<Ingresso> lista = Fachada.listarIngressos();
+			System.out.println(lista.toString() + "ola");
 
 			//model contem todas as linhas e colunas da tabela
 			DefaultTableModel model = new DefaultTableModel();

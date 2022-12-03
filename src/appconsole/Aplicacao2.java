@@ -103,8 +103,13 @@ public class Aplicacao2 {
 
 		System.out.println("\n---listar jogos na data 02/12/2022---");
 
-		for (Jogo j : Fachada.listarJogos("02/12/2022")) {
-			System.out.println(j);
+		try {
+			for (Jogo j : Fachada.listarJogos("02/12/2022")) {
+				System.out.println(j);
+			}
+		}
+		catch(Exception ex) {
+			System.out.println("problema na listagem dos jogos-->"+ex.getMessage());
 		}
 
 		//---------------------

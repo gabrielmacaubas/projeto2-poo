@@ -34,7 +34,11 @@ public class Fachada {
 		return repositorio.getIngressos();
 	}
 
-	public static ArrayList<Jogo> listarJogos(String data) {
+	public static ArrayList<Jogo> listarJogos(String data) throws Exception{
+		if (data.equals("")) {
+			throw new Exception("Nao listou jogos - data vazia");
+		}
+		
 		ArrayList<Jogo> JogosTemp = repositorio.getJogos();
 		ArrayList<Jogo> JogosData = new ArrayList<Jogo>();
 
