@@ -1,7 +1,7 @@
 /**********************************
  * IFPB - Curso Superior de Tec. em Sist. para Internet
  * POO
- * Prof. Fausto Maranh�o Ayres
+ * Prof. Fausto Maranhao Ayres
  **********************************/
 
 package appswing;
@@ -165,10 +165,12 @@ public class TelaIngresso {
 				try{
 					if (table.getSelectedRow() >= 0){
 						int codigo = (int) table.getValueAt( table.getSelectedRow(), 1);
+						
 						Fachada.cancelarIngresso(codigo);
 						label.setText("cancelou ingresso " +codigo);
-						listagem();
+						listagem();	
 					}
+					
 					else
 						label.setText("ingresso nao selecionado");
 				}
@@ -222,7 +224,6 @@ public class TelaIngresso {
 	public void listagem() {
 		try{
 			List<Ingresso> lista = Fachada.listarIngressos();
-			System.out.println(lista.toString() + "ola");
 
 			//model contem todas as linhas e colunas da tabela
 			DefaultTableModel model = new DefaultTableModel();

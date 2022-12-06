@@ -1,6 +1,8 @@
 package modelo;
 
+
 import java.util.ArrayList;
+
 
 public class IngressoGrupo extends Ingresso {
     private ArrayList<Jogo> Jogos = new ArrayList<Jogo>();
@@ -46,6 +48,6 @@ public class IngressoGrupo extends Ingresso {
             ids = ids + j.getId() +",";
         }
 
-	return  super.toString() + ", jogos:" + ids;
+	return super.toString() + ", jogos:" + ids;
     }
 }

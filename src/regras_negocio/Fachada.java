@@ -3,9 +3,10 @@ package regras_negocio;
  * Projeto2 de POO (2022.2)
  * 
  * Grupo de alunos: 
- * fulano, beltrano e cicrano
+ * Gabriel Macaúbas Melo, Samuel de Morais Lima e Louise Fernandes Caetano
  * 
  **********************************/
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,6 +21,7 @@ import repositorio.Repositorio;
 
 public class Fachada {
 	private static Repositorio repositorio = new Repositorio();	
+	
 	private Fachada() {}	
 	
 	public static ArrayList<Time> listarTimes() {

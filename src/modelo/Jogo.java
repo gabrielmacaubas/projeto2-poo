@@ -1,6 +1,8 @@
 package modelo;
 
+
 import java.util.ArrayList;
+
 
 public class Jogo {
     private int id;

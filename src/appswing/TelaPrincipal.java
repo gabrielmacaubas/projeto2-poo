@@ -96,7 +96,7 @@ public class TelaPrincipal {
 		mnTime.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TelaTime tela = new TelaTime();
+				TelaTime tela = new TelaTime();
 			}
 		});
 		menuBar.add(mnTime);

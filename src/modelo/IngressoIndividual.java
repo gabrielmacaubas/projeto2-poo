@@ -1,5 +1,6 @@
 package modelo;
 
+
 public class IngressoIndividual extends Ingresso {
     private Jogo jogo;
 
