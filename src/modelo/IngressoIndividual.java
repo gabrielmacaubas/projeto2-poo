@@ -29,7 +29,7 @@ public class IngressoIndividual extends Ingresso {
         return (1.2 * jogo.getPreco());
     }
 
-	public String toString() {
-		return super.toString() + ", jogo=" + jogo.getId();
+    public String toString() {
+	return super.toString() + ", jogo=" + jogo.getId();
     }
 }
