@@ -164,8 +164,8 @@ public class TelaIngresso {
 			public void actionPerformed(ActionEvent e) {
 				try{
 					if (table.getSelectedRow() >= 0){
-						String codigo = (String) table.getValueAt( table.getSelectedRow(), 1);
-						Fachada.cancelarIngresso(Integer.parseInt(codigo));
+						int codigo = (int) table.getValueAt( table.getSelectedRow(), 1);
+						Fachada.cancelarIngresso(codigo);
 						label.setText("cancelou ingresso " +codigo);
 						listagem();
 					}
