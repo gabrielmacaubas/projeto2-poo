@@ -118,7 +118,11 @@ public class Fachada {
 		Jogo jogo = repositorio.localizarJogo(id);
 
 		if(jogo == null) {
-			throw new Exception("Nao criou ingresso - codigo do jogo inexistente:" + id);
+			throw new Exception("Nao apagou jogo - codigo do jogo inexistente:" + id);
+		}
+		
+		if(jogo.getIngressos().size() != 0) {
+			throw new Exception("Nao apagou jogo - jogo possui ingressos");
 		}
 
 		repositorio.remover(jogo);
