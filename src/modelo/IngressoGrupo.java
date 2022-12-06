@@ -39,13 +39,13 @@ public class IngressoGrupo extends Ingresso {
     }
 
     @Override
-	public String toString() {
+    public String toString() {
         String ids = "";
 
         for(Jogo j : Jogos) {
             ids = ids + j.getId() +",";
         }
 
-		return  super.toString() + ", jogos:" + ids;
+	return  super.toString() + ", jogos:" + ids;
     }
 }
